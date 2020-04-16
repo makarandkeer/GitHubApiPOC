@@ -1,0 +1,23 @@
+<b>Issue </b><br>
+Create catalog wizard page loads as a blank white page.&#160; Viewing the page source shows that HTML content has been partially generated and a broken script tag can be observed.<br>
+<b>Environment</b><br>
+AEM 6.2 SP1<br>
+<b>Cause </b><br>
+HTML content generated a &lt;/s&lt;&gt; instead of &lt;/script&gt; which causes downstream buffer issues while generating the body content of the page.&#160;<br>
+<br>
+There is a buffer issue.&#160; The exact cause has not been pinpointed regarding why this occurs.<br>
+<b>Resolution </b><br>
+Modify the headers of the page and add bogus tags that will move the buffer out of the script tag.<br>
+<br>
+Steps:
+<ol>
+	<li>Use CRX/DE LITE, add a &lt;meta/&gt; tag to the /libs/commerce/gui/content/catalogs/createcatalogwizard/jcr:content/head node as shown in the attached image, screenshot-1.png (also embedded below). This change will add a metadata tag to the HTML generated:&lt;meta name=&quot;description&quot; content=&quot;Wizard that creates a new product catalog.&quot; /&gt;</li>
+	<li>Make sure the meta tag is placed before the clientlibs node as shown in screenshot-1.png</li>
+	<li>Test the Create Catalog page http://&lt;host&gt;:&lt;port&gt;/mnt/overlay/commerce/gui/content/catalogs/createcatalogwizard.html</li>
+</ol>
+<img align="none" alt="" height="274" data-msdynid="___009bceff-8678-ea11-a811-000d3a102a06___" data-msdyntype="data:image/png;base64" src="img/___009bceff-8678-ea11-a811-000d3a102a06___.png" style="width:500px;height:274px;" width="500"><br>
+<b>Internal Notes </b><br>
+[1]&#160;<a href="https://daycare.day.com/home/logotechcom/logotechcom_ch/managed_services/150913.html%c2%a0" target="_blank">https://daycare.day.com/home/logotechcom/logotechcom_ch/managed_services/150913.html&#160;</a><br>
+<br>
+[2]&#160;<a href="https://jira.corp.adobe.com/browse/NPR-24452" target="_blank">https://jira.corp.adobe.com/browse/NPR-24452</a>&#160;
+
