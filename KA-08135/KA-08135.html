@@ -1,4 +1,4 @@
-<b>Issue </b><br>
+<b>Issue Modified 04-16-2020 - 16:35</b><br>
 Create catalog wizard page loads as a blank white page.&#160; Viewing the page source shows that HTML content has been partially generated and a broken script tag can be observed.<br>
 <b>Environment</b><br>
 AEM 6.2 SP1<br>
@@ -6,7 +6,8 @@ AEM 6.2 SP1<br>
 HTML content generated a &lt;/s&lt;&gt; instead of &lt;/script&gt; which causes downstream buffer issues while generating the body content of the page.&#160;<br>
 <br>
 There is a buffer issue.&#160; The exact cause has not been pinpointed regarding why this occurs.<br>
-<b>Resolution </b><br>
+<b>Resolution<br>
+<img align="none" alt="" height="100" data-msdynid="___925f2e4c-3b80-ea11-a812-000d3a19fd67___" data-msdyntype="data:image/png;base64" src="img/___925f2e4c-3b80-ea11-a812-000d3a19fd67___.png" style="width:100px;height:100px;" width="100"></b><br>
 Modify the headers of the page and add bogus tags that will move the buffer out of the script tag.<br>
 <br>
 Steps:
@@ -15,7 +16,7 @@ Steps:
 	<li>Make sure the meta tag is placed before the clientlibs node as shown in screenshot-1.png</li>
 	<li>Test the Create Catalog page http://&lt;host&gt;:&lt;port&gt;/mnt/overlay/commerce/gui/content/catalogs/createcatalogwizard.html</li>
 </ol>
-<img align="none" alt="" height="274" data-msdynid="___009bceff-8678-ea11-a811-000d3a102a06___" data-msdyntype="data:image/png;base64" src="img/___009bceff-8678-ea11-a811-000d3a102a06___.png" style="width:500px;height:274px;" width="500"><br>
+<img align="none" alt="" data-msdynid="___009bceff-8678-ea11-a811-000d3a102a06___" data-msdyntype="data:image/png;base64" height="274" src="img/___009bceff-8678-ea11-a811-000d3a102a06___.png" style="width:500px;height:274px;" width="500"><br>
 <b>Internal Notes </b><br>
 [1]&#160;<a href="https://daycare.day.com/home/logotechcom/logotechcom_ch/managed_services/150913.html%c2%a0" target="_blank">https://daycare.day.com/home/logotechcom/logotechcom_ch/managed_services/150913.html&#160;</a><br>
 <br>
