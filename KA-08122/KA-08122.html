@@ -1,0 +1,32 @@
+<b>Issue </b><br>
+I am trying to upload a new presentation providing an old URL_Path. Getting an error &quot;Duplicate URL exists&quot; though I have already deleted the old presentation.<br>
+<b>Environment</b>
+<ul>
+	<li>Adobe Connect&#160;Licensed 9.X</li>
+	<li><img align="none" alt="" height="50" data-msdynid="___03ce7521-98c5-ea11-a812-000d3a19fd67___" data-msdyntype="data:image/png;base64" src="img/___03ce7521-98c5-ea11-a812-000d3a19fd67___.png" style="width:50px;height:50px;" width="50"></li>
+</ul>
+<br>
+<b>Cause </b>
+
+<ul>
+	<li>Old URL is still active in the database.</li>
+	<li><img align="none" alt="" height="256" data-msdynid="___06ce7521-98c5-ea11-a812-000d3a19fd67___" data-msdyntype="data:image/png;base64" src="img/___06ce7521-98c5-ea11-a812-000d3a19fd67___.png" style="width:256px;height:256px;" width="256"></li>
+</ul>
+<br>
+<b>Resolution </b>
+
+<ul>
+	<li>Disable the URL from PPS_SCOS table from the Connect Database using the below query:</li>
+	<li><img align="none" alt="" height="100" data-msdynid="___08ce7521-98c5-ea11-a812-000d3a19fd67___" data-msdyntype="data:image/png;base64" src="img/___08ce7521-98c5-ea11-a812-000d3a19fd67___.png" style="width:100px;height:100px;" width="100"></li>
+</ul>
+
+<div style="margin-left:40px;"><i>update pps_scos<br>
+set disabled = GETDATE()<br>
+where sco_id = XXXX</i><br>
+<br>
+(<b>Note</b>: XXX is the sco ID of the old presentation.)</div>
+<br>
+<br>
+<br>
+&#160;
+
